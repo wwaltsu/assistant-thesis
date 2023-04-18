@@ -1,4 +1,4 @@
-# assistant
+# my-project
 
 ## CLI Commands
 
