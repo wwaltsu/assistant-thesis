@@ -1,6 +1,3 @@
-//import { render } from "preact"
-import App from './components/app';
-
-//render(<App />, document.getElementById("app"))
+import App from './components/app'
 
 export default App;
