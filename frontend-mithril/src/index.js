@@ -1,17 +1,17 @@
-const m = require("mithril")
-root = document.body
+import m, { mount } from 'mithril'
+const root = document.body
 
-const GoalList = require("./components/GoalList")
-const EventList = require("./components/EventList")
+import GoalList from './components/GoalList'
+import EventList from './components/EventList'
 
 function MainComponent() {
-    return {
-    view: function() {
-        return m(".app", [
+  return {
+    view: () => {
+      return m('.app', [
         m(GoalList),
         m(EventList)
-        ])
+      ])
     }}
 }
 
-m.mount(root, MainComponent)
+mount(root, MainComponent)

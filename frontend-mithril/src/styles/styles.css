@@ -1,0 +1,15 @@
+.goal-list {
+    display: flex; 
+}
+
+.goal-list-item {
+    color: green;
+}
+
+.event-list {
+    display: flex; 
+}
+
+.event-list-item {
+    color: green;
+}

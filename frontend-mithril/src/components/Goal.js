@@ -1,9 +1,9 @@
-import { request } from 'mithril'
+const m = require('mithril')
 
 const Goal = {
   list: [],
   loadList: async () => {
-    const result = await request({
+    const result = await m.request({
       method: 'GET',
       url: 'https://jsonplaceholder.typicode.com/todos',
       withCredentials: true,
@@ -13,4 +13,4 @@ const Goal = {
   },
 }
 
-export default Goal
+module.exports = Goal
