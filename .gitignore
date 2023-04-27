@@ -1,9 +1,0 @@
-node_modules
-/build
-/*.log
-
-//mihtril 
-# Logs
-logs
-*.log
-.env
