@@ -1,14 +1,26 @@
-const m = require('mithril')
-const GoalList = require('../components/Goal')
+const m = require("mithril")
+const Goal = {
+  list: [],
+  loadList: async () => {
+    const result = await m.request({
+      method: "GET",
+      url: "http://localhost:3001/goals",
+    })
+    console.log(result)
+    Goal.list = result
+  },
+}
 
-module.exports = {
-  oninit: GoalList.loadList,
+
+const GoalList = {
+  oninit: Goal.loadList,
   view: () => {
-    return m('p', { 'class' : 'goal-list'
-    },GoalList.list.map((goal) => {
-      return m('p',{
-        'class': 'goal-list-item'
-      }, goal.title + ' ' + goal.completed)
+    return m("ul", Goal.list.map((Goal) => {
+      return m("div", {
+        "class": "goal-list-item"
+      }, Goal.goals)
     }))
-  }
+  },
 } 
+
+module.exports = { Goal, GoalList }

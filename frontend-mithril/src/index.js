@@ -1,15 +1,16 @@
-import m, { mount } from 'mithril'
-const root = document.body
+import m, { mount } from "mithril"
+import { EventList } from "./components/EventList"
+import { GoalList } from "./components/GoalList"
 
-import GoalList from './components/GoalList'
-import EventList from './components/EventList'
+const root = document.body
 
 function MainComponent() {
   return {
     view: () => {
-      return m('.app', [
-        m(GoalList),
-        m(EventList)
+      return m("div", { "class" : ".asd"},[
+        m(EventList),
+        m(GoalList)
+      
       ])
     }}
 }

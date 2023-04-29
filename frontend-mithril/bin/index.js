@@ -284,13 +284,33 @@ eval("// This exists so I'm only saving it once.\n\n\nmodule.exports = {}.hasOwn
 
 /***/ }),
 
+/***/ "./src/components/Event.js":
+/*!*********************************!*\
+  !*** ./src/components/Event.js ***!
+  \*********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\r\n\r\nconst GetEvents = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: \"GET\",\r\n      url: \"http://localhost:3001/events\",\r\n      withCredentials: true,\r\n    })\r\n    console.log(result)\r\n    GetEvents.list = result\r\n  },\r\n}\r\n/* \r\nconst PostEvent = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: 'POST',\r\n      url: 'https://jsonplaceholder.typicode.com/todos/1',\r\n      withCredentials: true,\r\n    })\r\n    console.log(result)\r\n    Event.list = result\r\n  },\r\n}\r\n\r\nconst RemoveEvent = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: 'DELETE',\r\n      url: 'https://jsonplaceholder.typicode.com/todos/1',\r\n      withCredentials: true,\r\n    })\r\n    console.log(result)\r\n    Event.list = result\r\n  },\r\n}\r\n\r\nmodule.exports = GetEvents, PostEvent, RemoveEvent */\r\n\r\nmodule.exports = GetEvents\n\n//# sourceURL=webpack://frontend-mithril/./src/components/Event.js?");
+
+/***/ }),
+
 /***/ "./src/components/EventList.js":
 /*!*************************************!*\
   !*** ./src/components/EventList.js ***!
   \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\r\n\r\n\r\nconst Event = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: \"GET\",\r\n      url: \"http://localhost:3001/events\",\r\n    })\r\n    console.log(result)\r\n    Event.list = result\r\n  },\r\n}\r\n\r\n\r\nconst EventList = {\r\n  oninit: Event.loadList,\r\n  view: () => {\r\n    return m(\"ul\", Event.list.map((Event) => {\r\n      return m(\"div\", {\r\n        \"class\": \"event-list-item\"\r\n      }, Event.events)\r\n    }))\r\n  },\r\n} \r\n\r\nmodule.exports = { Event, EventList }\n\n//# sourceURL=webpack://frontend-mithril/./src/components/EventList.js?");
+eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\r\nconst GetEvents = __webpack_require__(/*! ../components/Event */ \"./src/components/Event.js\")\r\n\r\nmodule.exports = {\r\n  oninit: GetEvents.loadList,\r\n  view: () => {\r\n    return m(\"div\", {\r\n      \"class\": \"container\"\r\n    }, GetEvents.list.map((event) => {\r\n      return m(\"div\", {\r\n        \"class\": \"event-list-item\"\r\n      }, event.title + \" \" + event.completed)\r\n    }))\r\n  }\r\n} \n\n//# sourceURL=webpack://frontend-mithril/./src/components/EventList.js?");
+
+/***/ }),
+
+/***/ "./src/components/Goal.js":
+/*!********************************!*\
+  !*** ./src/components/Goal.js ***!
+  \********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\r\n\r\nconst GetGoals = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: \"GET\",\r\n      url: \"http://localhost:3001/goals\",\r\n      withCredentials: true,\r\n    })\r\n    console.log(result)\r\n    GetGoals.list = result\r\n  },\r\n}\r\n\r\n/* const PostGoal = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: 'GET',\r\n      url: 'https://jsonplaceholder.typicode.com/todos/1',\r\n      withCredentials: true,\r\n    })\r\n    console.log(result)\r\n    PostGoal.list = result\r\n  },\r\n}\r\nconst RemoveGoal = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: 'GET',\r\n      url: 'https://jsonplaceholder.typicode.com/todos/1',\r\n      withCredentials: true,\r\n    })\r\n    console.log(result)\r\n    RemoveGoal.list = result\r\n  },\r\n} */\r\n\r\nmodule.exports = GetGoals\r\n// module.exports = GetGoals, PostGoal, RemoveGoal\n\n//# sourceURL=webpack://frontend-mithril/./src/components/Goal.js?");
 
 /***/ }),
 
@@ -300,7 +320,7 @@ eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/inde
   \************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\r\nconst Goal = {\r\n  list: [],\r\n  loadList: async () => {\r\n    const result = await m.request({\r\n      method: \"GET\",\r\n      url: \"http://localhost:3001/goals\",\r\n    })\r\n    console.log(result)\r\n    Goal.list = result\r\n  },\r\n}\r\n\r\n\r\nconst GoalList = {\r\n  oninit: Goal.loadList,\r\n  view: () => {\r\n    return m(\"ul\", Goal.list.map((Goal) => {\r\n      return m(\"div\", {\r\n        \"class\": \"goal-list-item\"\r\n      }, Goal.goals)\r\n    }))\r\n  },\r\n} \r\n\r\nmodule.exports = { Goal, GoalList }\n\n//# sourceURL=webpack://frontend-mithril/./src/components/GoalList.js?");
+eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\r\nconst GetGoals = __webpack_require__(/*! ../components/Goal */ \"./src/components/Goal.js\")\r\n\r\nmodule.exports = {\r\n\r\n  oninit: GetGoals.loadList,\r\n  view: () => {\r\n    return m(\"div\", {\r\n      \"class\": \"container\"\r\n    }, GetGoals.list.map((goal) => {\r\n      return m(\"div\", {\r\n        \"class\": \"goal-list-item\"\r\n      }, goal.title + \" \" + goal.completed)\r\n    }))\r\n  }\r\n}\n\n//# sourceURL=webpack://frontend-mithril/./src/components/GoalList.js?");
 
 /***/ }),
 
@@ -311,7 +331,7 @@ eval("const m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/inde
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mithril__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\");\n/* harmony import */ var mithril__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mithril__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_EventList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/EventList */ \"./src/components/EventList.js\");\n/* harmony import */ var _components_EventList__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_EventList__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_GoalList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/GoalList */ \"./src/components/GoalList.js\");\n/* harmony import */ var _components_GoalList__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_GoalList__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\r\n\r\nconst root = document.body\r\n\r\nfunction MainComponent() {\r\n  return {\r\n    view: () => {\r\n      return mithril__WEBPACK_IMPORTED_MODULE_0___default()(\"div\", { \"class\" : \".asd\"},[\r\n        mithril__WEBPACK_IMPORTED_MODULE_0___default()(_components_EventList__WEBPACK_IMPORTED_MODULE_1__.EventList),\r\n        mithril__WEBPACK_IMPORTED_MODULE_0___default()(_components_GoalList__WEBPACK_IMPORTED_MODULE_2__.GoalList)\r\n      \r\n      ])\r\n    }}\r\n}\r\n\r\n(0,mithril__WEBPACK_IMPORTED_MODULE_0__.mount)(root, MainComponent)\n\n//# sourceURL=webpack://frontend-mithril/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mithril__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\");\n/* harmony import */ var mithril__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mithril__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_GoalList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/GoalList */ \"./src/components/GoalList.js\");\n/* harmony import */ var _components_GoalList__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_GoalList__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_EventList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/EventList */ \"./src/components/EventList.js\");\n/* harmony import */ var _components_EventList__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_EventList__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\r\n\r\n\r\nconst root = document.body\r\n\r\n\r\n\r\n\r\nfunction MainComponent() {\r\n  return {\r\n    view: () => {\r\n      return mithril__WEBPACK_IMPORTED_MODULE_0___default()(\"div\", { \"class\" : \".asd\"},[\r\n        mithril__WEBPACK_IMPORTED_MODULE_0___default()((_components_GoalList__WEBPACK_IMPORTED_MODULE_1___default())),\r\n        mithril__WEBPACK_IMPORTED_MODULE_0___default()((_components_EventList__WEBPACK_IMPORTED_MODULE_2___default()))\r\n      ])\r\n    }}\r\n}\r\n\r\n(0,mithril__WEBPACK_IMPORTED_MODULE_0__.mount)(root, MainComponent)\n\n//# sourceURL=webpack://frontend-mithril/./src/index.js?");
 
 /***/ })
 

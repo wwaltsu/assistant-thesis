@@ -1,11 +1,11 @@
-const m = require('mithril')
+const m = require("mithril")
 
 const Goal = {
   list: [],
   loadList: async () => {
     const result = await m.request({
-      method: 'GET',
-      url: 'https://jsonplaceholder.typicode.com/todos',
+      method: "GET",
+      url: "https://jsonplaceholder.typicode.com/todos",
       withCredentials: true,
     })
     console.log(result)
